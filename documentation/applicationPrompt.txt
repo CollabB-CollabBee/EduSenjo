@@ -1,0 +1,152 @@
+Context:
+I want you to create a scalable web application that can handle millions of concurrent users, that is highly secure and has GIS visualizations, and can be extended by AI models.
+The development environment is: Ubuntu 22.04, 32Gb RAM, 128Gb SSD, 16 cores, 1Tb HDD, 1Gbps internet connection.
+
+Research:
+Give me the following as a list per item, and with explanations, and comparison:
+- The best suitable databases with explanation
+- The best suitable development frameworks
+- The best implementation of security frameworks
+- Visualize a microservice folder structure in an example
+- visualize a microservice folder with a plugin inplementation
+- Give the difference between mvc framework and microservice framewoks
+- List as many microservice template libraries in Node.js with their weaknesses and strengths.
+- List the best css template generators, make a table of the features for comparison
+
+Answer the questions:
+- How do you develop modular functionality like extensions/plugins in a microservice framework
+- Which (web dev) framework is best for microservices?
+- What is the best web gis development stack?
+- How to combine the best web gis stack with the microservice best database?
+- Do the microservice frame works have a template library to start a microservice web application?
+- In the above node.js template list, which is most suitable for a beginner developer, who develops a complex web application
+
+Application creation:
+ -Create a step by step guide for a beginner developer with mimimal prior knowledge to professional web development.
+ - Answer all the questions in context to this to be newly created application. USE: only input provided by the user. when necessary for this specific applicatition's implementation.
+ - The web application is complex and uses a microservice architecture
+ - The choice of database may not be hard coded in the files, but must be configurable in seperate files
+ - For this quide we use the MongoDB database, with a fallback of mysql
+ - Remember that the correct monogdb console command is 'mongosh' not 'mongo': DO NOT USE: mongo.
+ - Choice of frameworks: use Node.js, use Express.js, use Typescript, security middleware: Helmet
+ - choice of testing framework: Jest or Mocha
+ - choice of transpiler: Babel
+ - choice of password encryption: bcrypt
+ - handle error messages, and guide the user to a better solution
+ - List any important and necessary files in logical order of creation. Keep track on what specific functionality the user is working on.
+ Environment setup up installation guide for terminal:
+ - Create the steps for setting up a node.js project
+ - Create the steps for setting up a typescript project
+ - Create the steps for express Helmet
+ - Show how to create a microservice with express.js
+ - Visualize the directory structure of the app with the microservices in a tree structure.
+ - What would be the first important scope of the user microservice in order to develop? Give a development priority list from most important till least.
+ - List all files that need to be created for the user-microservice, registration functionality. Give the files a conistent naming.
+ - Visualize in tree form the logical implementation of these file in the user-microservice directory.
+ - List the most common business logic that is needed for user registration
+ - Create with the user the code for each of the files that where created in the previous step in the user-microservice directory, a complete simple functionality including import statements.
+- create the steps for creating a new user-microservice database in MongoDB
+
+Next steps:
+Consider this text:
+
+
+To test the user microservice and connect it to the MongoDB database, follow these steps:
+1. Configure MongoDB connection:
+Before you can test the user microservice, you need to establish a connection to the MongoDB database. This involves providing the necessary connection details, such as the database host, port, username, and password.
+You can either store these connection details in an environment variable or configuration file and then use them within your code to connect to the database. Alternatively, you can hardcode the connection details directly into your code, but this is generally not recommended for production environments.
+
+Give two examples of storing the connection in an environment variable, and one for the  configuration file. I want one distinct place to store such details. I don't want to search important settings in order to make changes to the application.
+- Make two configuration files, one for global, and one for each microservice
+- How would a dedicate config directory look like, at what level do I place a dedicated config directory in the microservice type application? Visualize the directory structure.
+- What would be the difference in config.json connection details and the dedicated user-microservice.json if I want to have one global config file and dedicated files for the microservices? As long as I am working on the microservice I should store and use the dedicated file to do so? is that correct?
+- So the server settings database host and port go in global and user and database in microservice.json
+- If not yet done, make all the user-microservice javascript files independent of the coupled database. Guide the user through this decoupling and make sure all the necessary files are processed for this DAO pattern. Give an outline of the approach.
+
+Next implementation of changes:
+- Here is what my top level structure looks like:
+
+├── config 
+├── docs_and_development_notes 
+├── node_modules 
+├── package.json 
+├── package-lock.json 
+├── tsconfig.json 
+└── user-microservice
+
+ Here is the structure of the user-microservice:
+
+.
+├── app.js
+├── bin
+│   └── www
+├── controllers
+│   ├── controllers.txt
+│   └── userRegistrationController.js
+├── dao
+│   ├── dao.txt
+│   ├── userDao.js
+│   └── userDao.ts
+├── emailNotifications
+│   ├── emailNotifications.txt
+│   └── userRegistrationEmailNotification.js
+├── models
+│   ├── models.txt
+│   └── userRegistrationRequestModel.js
+├── package.json
+├── public
+│   ├── images
+│   ├── javascripts
+│   └── stylesheets
+├── routes
+│   ├── index.js
+│   └── users.js
+├── services
+│   ├── services.txt
+│   └── userRegistrationService.js
+├── tests
+│   ├── integrationTests
+│   └── unitTests
+├── utils
+│   ├── errorHandler.js
+│   └── utils.txt
+└── views
+    ├── error.jade
+    ├── index.jade
+    └── layout.jade
+
+I want to change this into a typescript supported structure, but with this structure kept; unless there is a very important reason to deviate from this structure. Please change the typescript example tree to fit my structure.
+
+- Tell the user how to properly install npm packages and make them available in Typescript with the proper installation commands.
+- Give a basic tsconfig file content, and explain the purpose of each setting.
+- What factors do you need to know, in order to make a custom tsconfig.json file?
+- Give me a more flexible solution. Make the database configuration more flexible by using a generic configuration file that supports multiple database types, such as MySQL, PostgreSQL, and MongoDB.
+- Make a typescript file example of the last databasesconfig example. give the file a name, and tell in which directory to put it. Use the database type mysql, postrgres, mongodb and give in comment form their standard ports.
+
+- based on the databases-config.ts rewrite the code for userRegistrationController.js in the typescript form. The name of the text file is userRegistrationController.ts
+- Based on the userRegistrationController.ts file, list all other files that must be changed both in content and file extension to .ts?
+- Give the complete code for password-hasher.ts, such that it aligns with the userRegistrationController.ts file
+
+
+
+
+
+ 
+
+# GAP---------------------------------------
+- 
+User authentication and authorization: Give a list of files that must be made in order to make the user -microserves work and consider the list of previous work done or to do below.
+
+Done sections:
+- dao
+- emailNotification
+- models
+- routes
+- utils passwordhasher
+
+To Do:
+- controllers
+- userRegistrationRequestModel.d.ts
+- services
+- passwordhasher.d.ts ?
+-

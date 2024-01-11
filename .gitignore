@@ -1,0 +1,30 @@
+.chat
+.vscode
+# Ignore temporary files
+*.tmp
+*.swp
+
+# Ignore build outputs
+*.o
+*.obj
+*.exe
+*.dll
+
+# Ignore compiled files
+*.class
+*.jar
+*.war
+
+# Ignore documentation files
+*.md
+*.pdf
+
+# Ignore log files
+*.log
+
+# Ignore test files
+*.test
+
+# Ignore other files
+*.bak
+*.pyc
